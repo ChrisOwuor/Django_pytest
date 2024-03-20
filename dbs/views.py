@@ -4,7 +4,6 @@ from django.views import View
 from dbs.models import Author, Book
 from http import HTTPStatus
 from django.core.serializers import serialize
-from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -12,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 class BookCreate(View):
 
     def post(self, request):
+        print(request.data)
         author_instance = Author.objects.create(name="james blunt")
         book_instance = Book.objects.create(
             title="second coming", author=author_instance)
